@@ -1,3 +1,0 @@
-DEBUG = True
-
-import os
