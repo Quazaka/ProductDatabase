@@ -49,3 +49,6 @@ Temporary Items
 # Python stuff
 .pyc
 Presentation/flask/
+Presentation/website/__init__.pyc
+Presentation/website/config.pyc
+Presentation/website/views.pyc
