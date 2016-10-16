@@ -22,3 +22,9 @@ def list_items( cname ):
 	products = db.session.query(cque).all()
 
 	return render_template('list_products.html', products = products, category = cname)
+
+@app.route('/category/<cname>/<pid>')
+def show_product( cname, pid ):
+
+	return "Hello " + cname + "    id: " + pid
+

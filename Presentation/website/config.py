@@ -7,6 +7,7 @@ class BaseConfig(object):
     HOST = '0.0.0.0'
     PORT = 9000
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
