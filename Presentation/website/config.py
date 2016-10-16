@@ -1,10 +1,12 @@
 import os
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 class BaseConfig(object):
     DEBUG = False
     TESTING = False
     HOST = '0.0.0.0'
     PORT = 9000
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True

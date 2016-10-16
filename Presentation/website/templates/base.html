@@ -1,23 +1,39 @@
+<!DOCTYPE html>
 <html>
   <head>
     {% if title %}
-    <title>{{ title }} - testsite</title>
-    {% else %}
-    <title>Welcome to the testsite</title>
+      <title>{{ title.upper() }} - name_of_site</title>
+      {% else %}
+      <title>Welcome to the testsite</title>
     {% endif %}
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans|Source+Sans+Pro" rel="stylesheet"> 
+    <link href="/static/style.css" rel="stylesheet" type="text/css" media="screen" />
   </head>
   <body>
-    <div>Temp Menu: <a href="/index">Home</a></div>
-    <hr>
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <ul>
-        {% for message in messages %}
-          <li>{{ message }} </li>
-        {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
-    {% block content %}{% endblock %}
+    <div id="container">
+      <p id="logo"><a href="#"><img src="/static/placeholder.jpg" alt="Logo tekst" /></a></p>
+
+      <ul id="nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/">About</a></li>
+      </ul>
+
+      <div id="header">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul>
+          {% for message in messages %}
+            <li>{{ message }} </li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+      </div>
+
+      <div id="content">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
   </body}
 </html>
