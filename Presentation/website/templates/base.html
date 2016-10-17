@@ -10,15 +10,14 @@
     <link href="/static/style.css" rel="stylesheet" type="text/css" media="screen" />
   </head>
   <body>
-    <div id="container">
-      <p id="logo"><a href="#"><img src="/static/placeholder.jpg" alt="Logo tekst" /></a></p>
+    <div class="container">
+      <h1 class="logo">Hello World!</h1>
+        <ul class="navbar-list">
+          <li class="navbar-item"><a href="/">Home</a></li>
+          <li class="navbar-item"><a href="/">About</a></li>
+        </ul>
 
-      <ul id="nav">
-        <li><a href="/">Home</a></li>
-        <li><a href="/">About</a></li>
-      </ul>
-
-      <div id="header">
+      <div class="header">
       {% with messages = get_flashed_messages() %}
         {% if messages %}
           <ul>
@@ -30,7 +29,7 @@
       {% endwith %}
       </div>
 
-      <div id="content">
+      <div class="content">
         {% block content %}
         {% endblock %}
       </div>
