@@ -3,13 +3,12 @@ from website import app, models, db
 from flask_sqlalchemy import SQLAlchemy
 import sys
 
-from .models import cpu, motherboard
-
-clist = ["cpu", "motherboard"]
+#from .models import cpu, motherboard
+from .models import cpu
+clist = ["cpu"]
 
 @app.route('/')
 @app.route('/index')
-@app.route('/categories')
 def index():
 	return render_template('index.html', clist = clist)
 
@@ -18,7 +17,7 @@ def list_items( cname ):
 
 	# Gets the class module depending on the category chosen.
 	cque = getattr(sys.modules[__name__], cname)
-	# Queries the
+	# Queries the given category for products
 	products = db.session.query(cque).all()
 
 	return render_template('list_products.html', products = products, category = cname)

@@ -6,7 +6,8 @@ class BaseConfig(object):
     TESTING = False
     HOST = '0.0.0.0'
     PORT = 9000
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
+    #SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:KODE@localhost/tester'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class DevelopmentConfig(BaseConfig):

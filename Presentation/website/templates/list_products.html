@@ -11,10 +11,10 @@
   	{% for product in products %}
   	<tr>
   	  <td><img src="/static/placeholder.jpg" alt="{{ product.name }}"  height="42" width="42"/></td>
-  	  <td><a href="{{ url_for('show_product', cname=category, pid=product.id) }}">
+  	  <td><a href="{{ url_for('show_product', cname=category, pid=product.ID) }}">
       {{ product.name }}</a></td>
       
-  	  <td>{{ product.cores }}</td>
+  	  <td>{{ product.score }}</td>
       
   	</tr>
   	{% endfor %}
