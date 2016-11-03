@@ -15,6 +15,8 @@ def index():
 @app.route('/category/<cname>')
 def list_items( cname ):
 
+    # Needs a try around it, so that it returns an error/404 if the cname does
+    # not match a model/class
 	# Gets the class module depending on the category chosen.
 	cque = getattr(sys.modules[__name__], cname)
 	# Queries the given category for products
