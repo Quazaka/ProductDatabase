@@ -15,7 +15,6 @@ CREATE TABLE RAM (ProductID int(11) NOT NULL, capacity text, technology text, fo
 CREATE TABLE PSU (ProductID int(11) NOT NULL, power text, format text, modular bit(1), width text, depth text, height text, weight text, brand text);
 CREATE TABLE HardDrive (ProductID int(11) NOT NULL, isInternal bit(1), type text, formFactor text, capacity text, cacheSize text, transforRate text, brand text, sata text, height text, depth text, width text);
 CREATE TABLE CrawlProgress (Site varchar(255) NOT NULL, Queue mediumtext, `date` datetime NULL, PRIMARY KEY (Site));
-CREATE VIEW Reviews AS SELECT Pros.ReviewID, Pros.fact FROM Review INNER JOIN Pros ON Review.ReviewID = Pros.ReviewID INNER JOIN Cons ON Review.ReviewID = Cons.ReviewID INNER JOIN ReviewComment ON Review.ReviewID = ReviewComment.*;
 ALTER TABLE Product_Retailer ADD INDEX FKProduct_Re632660 (ProductID), ADD CONSTRAINT FKProduct_Re632660 FOREIGN KEY (ProductID) REFERENCES Product (ProductID);
 ALTER TABLE Product_Retailer ADD INDEX FKProduct_Re9378 (RetailerID), ADD CONSTRAINT FKProduct_Re9378 FOREIGN KEY (RetailerID) REFERENCES Retailer (RetailerID);
 ALTER TABLE Pros ADD INDEX FKPros890089 (ReviewID), ADD CONSTRAINT FKPros890089 FOREIGN KEY (ReviewID) REFERENCES Review (ReviewID);
