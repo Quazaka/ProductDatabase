@@ -1,18 +1,18 @@
 CREATE TABLE Product (ProductID int(11) NOT NULL AUTO_INCREMENT, description text, imagePath text, name varchar(255) NOT NULL UNIQUE, PRIMARY KEY (ProductID));
 CREATE TABLE Retailer (RetailerID int(11) NOT NULL AUTO_INCREMENT, name varchar(255) NOT NULL UNIQUE, PRIMARY KEY (RetailerID));
-CREATE TABLE Review (ReviewID int(10) NOT NULL AUTO_INCREMENT, reviewDate date NOT NULL, crawlDate date NOT NULL, content mediumtext NOT NULL, productRating float, reviewRating float, author varchar(255), positiveCount int(11), negativeCount int(11), verifiedPurchase bit(1), isCriticReview bit(1) NOT NULL, productType varchar(255) NOT NULL, url varchar(255) NOT NULL UNIQUE, title text NOT NULL, maxRating float, PRIMARY KEY (ReviewID));
-CREATE TABLE ReviewComment (ReviewID int(10) NOT NULL, ID int(10) NOT NULL AUTO_INCREMENT, content text, rating float, PRIMARY KEY (ID));
-CREATE TABLE Product_Retailer (ProductID int(11) NOT NULL, RetailerID int(11) NOT NULL, url text, price decimal(10, 2) NOT NULL, PRIMARY KEY (ProductID, RetailerID));
-CREATE TABLE Pros (ReviewID int(10) NOT NULL, ID int(10) NOT NULL AUTO_INCREMENT, fact text NOT NULL, PRIMARY KEY (ID));
-CREATE TABLE Cons (ReviewID int(10) NOT NULL, ID int(10) NOT NULL AUTO_INCREMENT, fact text NOT NULL, PRIMARY KEY (ID));
-CREATE TABLE GPU (ProductID int(11) NOT NULL, processorManufacturer text, chipset text, model text, architecture text, cooling text, memSize text, pciSlots int(10), manufacturer text);
-CREATE TABLE CPU (ProductID int(11) NOT NULL, model text, clock text, maxTurbo text, integratedGpu text, stockCooler bit(1), manufacturer text, cpuSeries text, logicalCores int(11), physicalCores int(11));
-CREATE TABLE Motherboard (ProductID int(11) NOT NULL, formFactor text, cpuType text, cpuCount int(11), socket text, netCard bit(1), soundCard bit(1), multiGPU bit(1), crossfire bit(1), sli bit(1), maxMem int(11), memSlots int(11), memType text, graphicsCard bit(1), chipset text);
-CREATE TABLE Cooling (ProductID int(11) NOT NULL, type text, speed text, `size` text, airflow text, noise text, connector text);
+CREATE TABLE Review (ReviewID int(10) NOT NULL AUTO_INCREMENT, reviewDate date NOT NULL, crawlDate date NOT NULL, content text NOT NULL, productRating float, reviewRating float, author varchar(255), positiveCount int(11), negativeCount int(11), verifiedPurchase bit(1), isCriticReview bit(1) NOT NULL, productType varchar(255) NOT NULL, url varchar(255) NOT NULL UNIQUE, title varchar(255) NOT NULL, maxRating float, PRIMARY KEY (ReviewID));
+CREATE TABLE ReviewComment (ReviewID int(10) NOT NULL, ID int(10) NOT NULL, content text, rating float, PRIMARY KEY (ReviewID, ID));
+CREATE TABLE Product_Retailer (ProductID int(11) NOT NULL, RetailerID int(11) NOT NULL, url text, price decimal(10, 2) NOT NULL, priceDate date NOT NULL, PRIMARY KEY (ProductID, RetailerID));
+CREATE TABLE Pros (ReviewID int(10) NOT NULL, ID int(10) NOT NULL, fact text NOT NULL, PRIMARY KEY (ReviewID, ID));
+CREATE TABLE Cons (ReviewID int(10) NOT NULL, ID int(10) NOT NULL, fact text NOT NULL, PRIMARY KEY (ReviewID, ID));
+CREATE TABLE GPU (ProductID int(11) NOT NULL, processorManufacturer text, chipset text, model text, architecture text, cooling text, memSize text, pciSlots int(10));
+CREATE TABLE CPU (ProductID int(11) NOT NULL, model text, clock text, maxTurbo text, integratedGpu text, stockCooler bit(1), manufacturer text, cpuType text, logicalCores int(11), physicalCores int(11), socket text);
+CREATE TABLE Motherboard (ProductID int(11) NOT NULL, fromFactor text, cpuType text, cpuCount int(11), socket text, netCard bit(1), soundCard bit(1), multiGPU bit(1), crossfire bit(1), sli bit(1), maxMem int(11), memSlots int(11), memType text, graphicsCard bit(1));
+CREATE TABLE Cooling (ProductID int(11) NOT NULL, type text, speed text, `size` text, airflow text, noice text, connector text);
 CREATE TABLE Chassis (ProductID int(11) NOT NULL, type text, atx bit(1), miniAtx bit(1), miniItx bit(1), fans text, brand text, height text, width text, depth text, weight text);
 CREATE TABLE SoundCard (ProductID int(11) NOT NULL, type text, speakerSupport text, socket text, fullDuplex text);
 CREATE TABLE RAM (ProductID int(11) NOT NULL, capacity text, technology text, formFactor text, speed text, casLatens text, type text);
-CREATE TABLE PSU (ProductID int(11) NOT NULL, power text, formFactor text, modular bit(1), width text, depth text, height text, weight text, brand text);
+CREATE TABLE PSU (ProductID int(11) NOT NULL, power text, format text, modular bit(1), width text, depth text, height text, weight text, brand text);
 CREATE TABLE HardDrive (ProductID int(11) NOT NULL, isInternal bit(1), type text, formFactor text, capacity text, cacheSize text, transforRate text, brand text, sata text, height text, depth text, width text);
 ALTER TABLE Product_Retailer ADD INDEX FKProduct_Re632660 (ProductID), ADD CONSTRAINT FKProduct_Re632660 FOREIGN KEY (ProductID) REFERENCES Product (ProductID);
 ALTER TABLE Product_Retailer ADD INDEX FKProduct_Re9378 (RetailerID), ADD CONSTRAINT FKProduct_Re9378 FOREIGN KEY (RetailerID) REFERENCES Retailer (RetailerID);
@@ -28,3 +28,4 @@ ALTER TABLE RAM ADD INDEX FKRAM433706 (ProductID), ADD CONSTRAINT FKRAM433706 FO
 ALTER TABLE PSU ADD INDEX FKPSU435062 (ProductID), ADD CONSTRAINT FKPSU435062 FOREIGN KEY (ProductID) REFERENCES Product (ProductID);
 ALTER TABLE HardDrive ADD INDEX FKHardDrive82077 (ProductID), ADD CONSTRAINT FKHardDrive82077 FOREIGN KEY (ProductID) REFERENCES Product (ProductID);
 ALTER TABLE ReviewComment ADD INDEX FKReviewComm467605 (ReviewID), ADD CONSTRAINT FKReviewComm467605 FOREIGN KEY (ReviewID) REFERENCES Review (ReviewID);
+
