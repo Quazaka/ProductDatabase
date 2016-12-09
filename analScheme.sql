@@ -37,7 +37,7 @@ CREATE TABLE review (
   product_id int(11), 
   `date`     date, 
   is_critic  tinyint(1), 
-  url        text NOT NULL UNIQUE, 
+  url        varchar(255) NOT NULL UNIQUE, 
   title      text NOT NULL, 
   author     varchar(255), 
   rating     float, 
